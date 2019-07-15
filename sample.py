@@ -40,15 +40,21 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     # 回應使用者輸入的話
+    """
     message = ImageSendMessage(
     original_content_url='https://truth.bahamut.com.tw/s01/201703/892b73560a6de3bf6c83475bb3627f82.JPG',
     preview_image_url='https://truth.bahamut.com.tw/s01/201703/892b73560a6de3bf6c83475bb3627f82.JPG')
     line_bot_api.reply_message(event.reply_token, message)
     """
+    """
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.message.text))
     """  
+    message = StickerSendMessage(
+    package_id='1',
+    sticker_id='1')
+    line_bot_api.reply_message(event.reply_token, message)
     
 
 
